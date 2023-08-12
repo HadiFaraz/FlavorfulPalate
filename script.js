@@ -36,7 +36,7 @@ async function getMealsBySearch(term) {
 }
 
 function addMeal(mealData, random = false) {
-    console.log(mealData)
+    
     const meal = document.createElement("div");
     meal.classList.add("meal");
 
@@ -44,12 +44,12 @@ function addMeal(mealData, random = false) {
         <div class="meal-header">
             ${random ? `
             <span class="random">
-                Recipe of the Day
+                Special for You
             </span> ` : '' }
             <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}"/>
         </div>
         <div class="meal-body">
-            <h4>${mealData.strMeal}</h4>
+            <h4 class="meal-header">${mealData.strMeal}</h4>
             <button class = "fav-btn">
             <i class="fas fa-heart"></i>
             </button>
@@ -69,8 +69,12 @@ function addMeal(mealData, random = false) {
         fetchFavMeals();
     });
 
-    meal.addEventListener('click', () => {
+    const showMealInfoHandler = meal.querySelectorAll(".meal-header")
+
+    showMealInfoHandler.forEach(item => {
+        item.addEventListener('click', () => {
         showMealInfo(mealData)
+        })  
     })
 
     mealsEl.appendChild(meal);
@@ -86,6 +90,7 @@ function removeMealLS(mealId) {
 
     localStorage.setItem("mealIds", JSON.stringify(mealIds.filter((id) => id !== mealId)));
 }
+
 function getMealsLS() {
     const mealIds = JSON.parse(localStorage.getItem("mealIds"));
 
@@ -113,9 +118,9 @@ function addMealFav(mealData) {
     const favMeal = document.createElement("li");
 
     favMeal.innerHTML = `
-    <img src=${mealData.strMealThumb}
+    <img class="meal-header" src=${mealData.strMealThumb}
     alt=${mealData.strMeal}>
-    <span>${mealData.strMeal}</span>
+    <span class="meal-header">${mealData.strMeal}</span>
     <button class = "clear">
     <i class="fa-solid fa-circle-xmark"></i>
     </button>
@@ -123,11 +128,18 @@ function addMealFav(mealData) {
     const btn = favMeal.querySelector(".clear");
     btn.addEventListener("click", () => {
         removeMealLS(mealData.idMeal);
+        const favBtn = document.querySelector(".meal-body .fav-btn")
+        favBtn.classList.remove("active")
+
         fetchFavMeals();
     })
 
-    favMeal.addEventListener('click', () => {
+    const showMealInfoHandler = favMeal.querySelectorAll(".meal-header")
+
+    showMealInfoHandler.forEach(item => {
+        item.addEventListener('click', () => {
         showMealInfo(mealData)
+        })
     })
 
     FavouriteContainer.appendChild(favMeal);

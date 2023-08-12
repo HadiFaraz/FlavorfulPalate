@@ -24,6 +24,7 @@ img {
 
 .mobile-container {
     width: 380px;
+    height: 590px;
     box-shadow: 0 0 15px 10px rgba(100, 100, 100, 0.4);
     border-radius: 3px;
     overflow: hidden;
@@ -66,10 +67,14 @@ header button {
     margin: 1px;
     font-size: 25px;
 }
+
+.fav-meals-container {
+    display: flex;
+    overflow: scroll;
+}
+
 .fav-meals {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     list-style-type: none;
     padding: 0;
 }
@@ -116,10 +121,16 @@ header button {
 .meal {
     border-radius: 3px;
     box-shadow: 0 0 10px 5px rgba(100, 100, 1000, 0.1);
-    overflow: hidden;
     background-color: white ;
     margin: 1.5rem;
     cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.meal:hover {
+    box-shadow: 0 0 10px 4px rgba(100, 100, 100, 0.3);
+    transform: translateY(-3px);
+    transition: all .3s ease-in-out;
 }
 
 .meal-header {
@@ -138,8 +149,17 @@ header button {
 .meal-header img {
     object-fit: cover;
     height: 200px;
-    width: 100%;
+    width: 332px;
+    filter: grayscale(50%);
+    transition: all .3s ease-in-out;
+}
 
+.meal:hover img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.8);
 }
 
 .meal-body {
