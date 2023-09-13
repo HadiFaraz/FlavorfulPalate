@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="main-content">
+    <nav>
+        <div class="nav-center">
+            <div class="nav-header">
+                <h1 class="website--name">Flavorful Palate</h1>
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i>  
+                </button>
+            </div>
+            <div class="controls">
+                <div class="control active-btn" data-id="home">Home</div>
+                <div class="control" data-id="favourites">favourites</div>
+                <div class="control" data-id="searchScreen">Flavor Search</div>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <section class="section home active" id="home">
+            <div class="home--container">
+                <img class="home--img" src="./images/food.jpg" alt="">
+                <div class="meals" id = 'meals'></div>
+            </div>
+        </section>
+        <section class="section favourites" id="favourites">
+            <div class="fav--meals--screen">
+                <h1>Your Favourite Meals</h1>
+                <div class="fav--meals--cont"></div>
+            </div>
+        </section>
+        <section class="section searchItems" id="searchScreen">
+            <div class="search--screen">
+                <div class="searchBar--cont">
+                    <input class="searchBar" type="text" id = "search-term" placeholder="Search your favourite meals" autocomplete="off">
+                    <button class="searchBtn" id="search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="searchedItem-cont"></div>
+                <div class="errorCont"></div>
+            </div>
+        </section>
+        <div class="popup-container hidden" id = "meal-popup">
+            <div class="popup">
+                <button id = "close-popup" class = "close-popup">
+                    <i class="fas fa-times"></i>
+                </button> 
+                <div class="meal-info" id="meal-info"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
