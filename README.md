@@ -1,4 +1,6 @@
-# FlavorfulPalate
+![Overview](images/Walkthrough.gif)
+
+# Flavorful Palate
 
 👋 Hi there! Welcome to my recipe website, one of my initial solo endeavors in web development. 
 Crafted with Vanilla JS, HTML, and CSS. Here are the main features and what I've learned:
